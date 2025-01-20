@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="row mb-5">
+    <div class="col-12 mb-3">
+      <h1>
+        Dependent Dropdown/Cascading dropdown
+        <a
+          target="_blank"
+          href="https://github.com/devashishpatil23/practical-examples-angular/tree/main/src/app/custom-directives/host-listner"
+          class="h4"
+          >GitHub link</a
+        >
+      </h1>
+    </div>
+    <div class="col-12 d-flex flex-column flex-md-row">
+      <div class="m-2">
+        <!-- Client Dropdown -->
+        <label for="client">Client:</label>
+        <select id="client" [(ngModel)]="clientId" (change)="onClientChange()">
+          <option value="" disabled selected>Select Client</option>
+
+          @for(client of clients; track $index) {
+          <option [value]="client.id">{{ client.name }}</option>
+          }
+        </select>
+      </div>
+
+      <div class="m-2">
+        <!-- Site Dropdown -->
+        <label for="site">Sites:</label>
+        <select [(ngModel)]="siteName" (change)="onSiteChange()" id="site">
+          <option value="" disabled selected>Select Site</option>
+          @for(site of sites; track $index) {
+          <option [value]="site.name">{{ site.name }}</option>
+          }
+        </select>
+      </div>
+
+      <div class="m-2">
+        <!-- Site Dropdown -->
+        <label for="site">Build:</label>
+        <select id="site">
+          <option value="" disabled selected>Select Build</option>
+          @for(build of builds; track $index) {
+          <option [value]="build">{{ build }}</option>
+          }
+        </select>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,127 @@
+<div class="container">
+  <div class="mb-5 border-bottom">
+    <h1>
+      Server side pagination, filter, sorting
+      <a
+        target="_blank"
+        href="https://github.com/devashishpatil23/practical-examples-angular/tree/main/src/app/custom-directives/host-listner"
+        class="h4"
+        >GitHub link</a
+      >
+    </h1>
+  </div>
+  <div class="row mb-4">
+    <div class="col-md-3">
+      <label for="category">Category</label>
+      <input
+        type="text"
+        [(ngModel)]="categoryName"
+        id="category"
+        class="form-control"
+        placeholder="Enter Category"
+      />
+    </div>
+
+    <div class="col-md-3">
+      <label for="productName">Product Name</label>
+      <input
+        type="text"
+        [(ngModel)]="productName"
+        id="productName"
+        class="form-control"
+        placeholder="Enter Product Name"
+      />
+    </div>
+
+    <div class="col-md-3">
+      <label for="productId">Product ID</label>
+      <input
+        type="text"
+        [(ngModel)]="productId"
+        id="productId"
+        class="form-control"
+        placeholder="Enter Product ID"
+      />
+    </div>
+
+    <div class="col-md-3 d-flex align-items-end">
+      <button (click)="onSearch()" type="button" class="btn btn-primary w-100">
+        Search
+      </button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="mb-2">
+      <select (change)="onSearch()" [(ngModel)]="pageSize" class="px-2">
+        <option value="10">10</option>
+        <option value="15">15</option>
+        <option value="25">25</option>
+      </select>
+    </div>
+    <div class="col-12">
+      <table class="table table-bordered">
+        <thead class="thead-dark">
+          <tr>
+            <th (click)="onSort('productId')" scope="col ">
+              <div class="d-flex justify-content-between">
+                <span>Product ID</span>
+                <span> <i class="bi bi-arrow-down-up"></i></span>
+              </div>
+            </th>
+            <th (click)="onSort('productName')" scope="col">
+              <div class="d-flex justify-content-between">
+                <span>Product Name</span>
+                <span> <i class="bi bi-arrow-down-up"></i></span>
+              </div>
+            </th>
+            <th (click)="onSort('category')" scope="col">
+              <div class="d-flex justify-content-between">
+                <span>Category</span>
+                <span> <i class="bi bi-arrow-down-up"></i></span>
+              </div>
+            </th>
+            <th (click)="onSort('price')" scope="col">
+              <div class="d-flex justify-content-between">
+                <span>Price</span>
+                <span> <i class="bi bi-arrow-down-up"></i></span>
+              </div>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          @for(item of productList; track $index){
+          <tr>
+            <td>{{ item.productId }}</td>
+            <td>{{ item.shortName }}</td>
+            <td>{{ item.category }}</td>
+            <td>{{ item.price }}</td>
+          </tr>
+          }
+        </tbody>
+      </table>
+      <nav aria-label="Page navigation example">
+        <ul class="pagination">
+          <li class="page-item" [class.disabled]="pageNumber === 1">
+            <a class="page-link" (click)="pageChange(pageNumber - 1)"
+              >Previous</a
+            >
+          </li>
+          @for (page of getPageNumbers(); track $index) {
+          <li
+            (click)="pageChange(page)"
+            class="page-item"
+            [class.active]="page == pageNumber"
+          >
+            <a class="page-link">{{ page }}</a>
+          </li>
+          }
+
+          <li class="page-item" [class.disabled]="pageNumber === totalPages">
+            <a class="page-link" (click)="pageChange(pageNumber + 1)">Next</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>

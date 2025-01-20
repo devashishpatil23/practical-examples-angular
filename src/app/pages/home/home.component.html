@@ -1,17 +1,17 @@
 <div class="container">
-    <div class="row">
-      <div class="col-12 d-flex flex-wrap">
-        @for(comp of componentsData; track $index ){
-  
-        <span class="bg-primary text-decoration-none py-1 px-2 m-2">
-          <a
-            class="text-white text-decoration-none"
-            [routerLink]="comp.RouterLink"
-            >{{ comp.label }}</a
-          >
-        </span>
+  <div class="row">
+
+    <div class="col-12">
+      <ul>
+        @for(item of componentsData; track $index){
+        <a
+          [routerLink]="item.routerLink"
+          class="text-dark text-decoration-none"
+        >
+          <li>{{ item.label }}</li></a
+        >
         }
-      </div>
+      </ul>
     </div>
   </div>
-  
+</div>
