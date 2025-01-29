@@ -15,6 +15,7 @@ export class HoverHighlightDirective {
   @HostListener('mouseleave', ['$event']) onMouseLeave(event: MouseEvent) {
     this.highlight('transparent');
   }
+  
   private highlight(color: string) {
     this.renderer.setStyle(this.el.nativeElement, 'backgroundColor', color);
   }

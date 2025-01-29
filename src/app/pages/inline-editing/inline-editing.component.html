@@ -1,0 +1,56 @@
+<!-- inline-editing.component.html -->
+<div class="container">
+  <div class="row">
+    <div class="col-12 d-flex justify-content-end my-3">
+      <button class="btn btn-primary text-white" (click)="onAdd()">Add</button>
+    </div>
+
+    <div class="col-12">
+      <table class="table table-bordered table-hover">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Sr no</th>
+            <th scope="col">Name</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of departments; let i = index">
+            <td>{{ i + 1 }}</td>
+
+            <td>
+              <div *ngIf="!item.isEdit">{{ item.deptName }}</div>
+              <div *ngIf="item.isEdit">
+                <input
+                  type="deptName"
+                  class="form-control"
+                  placeholder="Enter text"
+                  [(ngModel)]="item.deptName"
+                />
+              </div>
+            </td>
+
+            <td>
+              <span *ngIf="!item.isEdit">
+                <button (click)="onEdit(item)" class="btn btn-sm">
+                  <i class="bi bi-pencil-square"></i>
+                </button>
+                <button class="btn btn-sm">
+                  <i class="bi bi-trash3"></i>
+                </button>
+              </span>
+              <span *ngIf="item.isEdit">
+                <button (click)="onUpdate(item)" class="btn btn-sm">
+                  <i class="bi bi-floppy"></i>
+                </button>
+                <button (click)="onCancel(item)" class="btn btn-sm">
+                  <i class="bi bi-x-circle"></i>
+                </button>
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
