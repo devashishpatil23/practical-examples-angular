@@ -1,3 +1,4 @@
+import { NgIf } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import {
   FormArray,
@@ -10,7 +11,7 @@ import {
 
 @Component({
   selector: 'app-reactive-form',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, NgIf],
   templateUrl: './reactive-form.component.html',
   styleUrl: './reactive-form.component.scss',
 })
@@ -21,6 +22,16 @@ export class ReactiveFormComponent {
   ngOnInit() {
     this.initializeForm();
     this.addNewConatctForm();
+    this.addNewLoansForm();
+    this.applicationForm.valueChanges.subscribe(() => {
+      const formValue = this.applicationForm.value;
+      const { fName, mName, lName } = formValue;
+      const fullName = `${fName} ${mName} ${lName}`;
+      this.applicationForm.patchValue(
+        { fullName: fullName },
+        { emitEvent: false }
+      );
+    });
   }
 
   initializeForm() {
@@ -63,5 +74,21 @@ export class ReactiveFormComponent {
 
   removeContact(idx: number) {
     this.contacts.removeAt(idx);
+  }
+
+  get loans(): FormArray {
+    return this.applicationForm.controls['loanDetails'] as FormArray;
+  }
+
+  addNewLoansForm() {
+    const loanForm = new FormGroup({
+      bankName: new FormControl(''),
+      loanAmount: new FormControl(''),
+      emi: new FormControl(''),
+    });
+    this.loans.push(loanForm);
+  }
+  removeLoanForm(idx: number) {
+    this.loans.removeAt(idx);
   }
 }
