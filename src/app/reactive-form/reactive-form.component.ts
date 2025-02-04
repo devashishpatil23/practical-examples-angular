@@ -22,6 +22,7 @@ export class ReactiveFormComponent {
   ngOnInit() {
     this.initializeForm();
     this.addNewConatctForm();
+    this.maritalStatusChnaged();
     this.addNewLoansForm();
     this.applicationForm.valueChanges.subscribe(() => {
       const formValue = this.applicationForm.value;
@@ -40,6 +41,8 @@ export class ReactiveFormComponent {
       mName: ['', [Validators.required]],
       lName: ['', [Validators.required]],
       fullName: ['', [Validators.required]],
+      maritalStatus: ['', [Validators.required]],
+      spouseName: ['', [Validators.required]],
       isWorking: ['No', [Validators.required]],
       isOwnBusiness: ['', [Validators.required]],
       workDetails: this.fb.group({
@@ -62,12 +65,30 @@ export class ReactiveFormComponent {
     });
   }
 
+  maritalStatusChnaged() {
+    this.applicationForm
+      .get('martialStatus')
+      ?.valueChanges.subscribe((status) => {
+        if (status === 'married') {
+          this.applicationForm.addControl(
+            'spouseName',
+            new FormControl('', [Validators.required])
+          );
+        } else {
+          this.applicationForm.removeControl('spouseName');
+        }
+      });
+    console.log('yes');
+  }
+  get martialStatusValue() {
+    return this.applicationForm.get('martialStatus')?.value;
+  }
   get contacts(): FormArray {
     return this.applicationForm.controls['contactList'] as FormArray;
   }
   addNewConatctForm() {
     const conatctForm = new FormGroup({
-      conatctNo: new FormControl(''),
+      contactNo: new FormControl(''),
     });
     this.contacts.push(conatctForm);
   }

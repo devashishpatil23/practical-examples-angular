@@ -74,3 +74,6 @@ export class ServeSideFilterPaginationComponent {
     this.onSearch();
   }
 }
+
+
+// https://projectapi.gerasim.in/api/Products?pageNumber=1&pageSize=10&sortBy=productId&sortOrder=asc

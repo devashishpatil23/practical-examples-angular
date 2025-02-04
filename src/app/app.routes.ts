@@ -6,6 +6,8 @@ import { ServeSideFilterPaginationComponent } from './pages/serve-side-filter-pa
 import { InlineEditingComponent } from './pages/inline-editing/inline-editing.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
+import { ToolTipComponent } from './pages/tool-tip/tool-tip.component';
+import { CopyToClipboardComponent } from './pages/copy-to-clipboard/copy-to-clipboard.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -23,6 +25,14 @@ export const routes: Routes = [
   {
     path: 'reactive-form',
     component: ReactiveFormComponent,
+  },
+  {
+    path: 'tool-tip',
+    component: ToolTipComponent,
+  },
+  {
+    path: 'copy-to-clipboard',
+    component: CopyToClipboardComponent,
   },
   { path: '**', component: HomeComponent },
 ];

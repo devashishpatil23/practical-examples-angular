@@ -19,4 +19,12 @@ export const componentsData = [
     label: 'Reactive form',
     routerLink: '/reactive-form',
   },
+  {
+    label: 'Tool Tip Custom Directive',
+    routerLink: '/tool-tip',
+  },
+  {
+    label: 'Copy to clipboard Custom Directive',
+    routerLink: '/copy-to-clipboard',
+  },
 ];
