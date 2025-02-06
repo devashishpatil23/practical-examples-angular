@@ -1,0 +1,120 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card p-4 shadow">
+        <h3 class="text-center mb-4">User form</h3>
+        <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+          <div class="mb-3">
+            <label for="name" class="form-label">Name:</label>
+            <input
+              formControlName="name"
+              type="text"
+              id="name"
+              class="form-control"
+            />
+            @if(myForm.get('name')?.invalid && (myForm.controls['name'].dirty ||
+            myForm.get('name')?.touched)){
+            <span class="text-danger small">Name is required</span>
+            }
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email:</label>
+            <input
+              formControlName="email"
+              type="email"
+              id="email"
+              class="form-control"
+            />
+            @if(myForm.get('email')?.invalid && (myForm.get('email')?.dirty ||
+            myForm.get('email')?.touched)){
+            @if(myForm.get('email')?.errors?.['required']){
+            <span class="text-danger small">Email is required</span>
+            } @if(myForm.get('email')?.errors?.['email']){
+            <span class="text-danger small">Invalid email format</span>
+            } }
+          </div>
+          <div class="mb-2">
+            <div>
+              <label for="password" class="form-label">Password:</label>
+              <input
+                formControlName="password"
+                type="password"
+                id="password"
+                class="form-control"
+              />
+              <input
+                class="mt-2"
+                appShowPassword
+                targetElement="password"
+                id="showPassword"
+                type="checkbox"
+              />
+              <label class="ps-2" for="showPassword">Show Password</label>
+            </div>
+
+            @if(myForm.get('password')?.invalid &&
+            (myForm.get('password')?.dirty || myForm.get('password')?.touched)){
+            @if(myForm.get('password')?.errors?.['required']){
+            <span class="text-danger small">Password is required</span><br />
+            }
+            <ul>
+              @if(myForm.get('password')?.errors?.['minlength']){
+              <li>
+                <span class="text-danger small"
+                  >Min 8 char password is required</span
+                >
+              </li>
+              } @if(myForm.get('password')?.errors?.['hasUpperCase']){
+              <li>
+                <span class="text-danger small">At least 1 Uppercase</span>
+              </li>
+              } @if(myForm.get('password')?.errors?.['hasLowerCase']){
+              <li>
+                <span class="text-danger small">At least 1 Lowercase</span>
+              </li>
+              } @if(myForm.get('password')?.errors?.['hasSpecialChar']){
+              <li>
+                <span class="text-danger small">At least 1 Special Char</span>
+              </li>
+              } @if(myForm.get('password')?.errors?.['hasNumber']){
+              <li>
+                <span class="text-danger small">At least 1 Number </span>
+              </li>
+              }
+            </ul>
+            }
+          </div>
+          <div class="mb-3">
+            <div>
+              <label for="confirmPassword" class="form-label"
+                >Confirm Password:</label
+              >
+              <input
+                formControlName="confirmPassword"
+                type="password"
+                id="confirmPassword"
+                class="form-control"
+              />
+            </div>
+
+            @if(myForm.get('confirmPassword')?.invalid &&
+            (myForm.get('confirmPassword')?.touched)){
+            @if(myForm.get('confirmPassword')?.errors?.['required']){
+            <span class="text-danger small">Confirm Password is required</span
+            ><br />
+            } @if(myForm.get('confirmPassword')?.errors?.['mismatch']){
+            <span class="text-danger small">Password do not match</span>
+            } }
+          </div>
+          <button
+            [disabled]="myForm.invalid"
+            type="submit"
+            class="btn btn-primary w-100"
+          >
+            Save
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

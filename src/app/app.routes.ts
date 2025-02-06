@@ -8,6 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 import { ToolTipComponent } from './pages/tool-tip/tool-tip.component';
 import { CopyToClipboardComponent } from './pages/copy-to-clipboard/copy-to-clipboard.component';
+import { BasicReactiveFormComponent } from './pages/basic-reactive-form/basic-reactive-form.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -33,6 +34,10 @@ export const routes: Routes = [
   {
     path: 'copy-to-clipboard',
     component: CopyToClipboardComponent,
+  },
+  {
+    path: 'basic-reactive-form',
+    component: BasicReactiveFormComponent,
   },
   { path: '**', component: HomeComponent },
 ];

@@ -1,6 +1,5 @@
 <div class="container">
   <div class="row">
-
     <div class="col-12">
       <ul>
         @for(item of componentsData; track $index){
@@ -8,7 +7,7 @@
           [routerLink]="item.routerLink"
           class="text-dark text-decoration-none"
         >
-          <li>{{ item.label }}</li></a
+          <li class="mb-2">{{ item.label }}</li></a
         >
         }
       </ul>

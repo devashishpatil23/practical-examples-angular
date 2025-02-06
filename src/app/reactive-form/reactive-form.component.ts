@@ -23,7 +23,7 @@ export class ReactiveFormComponent {
     this.initializeForm();
     this.addNewConatctForm();
     this.maritalStatusChnaged();
-    this.addNewLoansForm();
+    this.handleEmploymentStatusChanges();
     this.applicationForm.valueChanges.subscribe(() => {
       const formValue = this.applicationForm.value;
       const { fName, mName, lName } = formValue;
@@ -41,13 +41,11 @@ export class ReactiveFormComponent {
       mName: ['', [Validators.required]],
       lName: ['', [Validators.required]],
       fullName: ['', [Validators.required]],
-      maritalStatus: ['', [Validators.required]],
-      spouseName: ['', [Validators.required]],
-      isWorking: ['No', [Validators.required]],
-      isOwnBusiness: ['', [Validators.required]],
+      // maritalStatus: ['', [Validators.required]],
+      // spouseName: ['', [Validators.required]],
+      employmentStatus: ['working', [Validators.required]],
       workDetails: this.fb.group({
         jobType: ['', [Validators.required]],
-        companyName: ['', [Validators.required]],
         position: ['', [Validators.required]],
         salary: ['', [Validators.required]],
       }),
@@ -59,9 +57,8 @@ export class ReactiveFormComponent {
       }),
 
       personalEmail: ['', [Validators.required]],
-      businessEmail: ['', [Validators.required]],
+      officialEmail: ['', [Validators.required]],
       contactList: this.fb.array([]),
-      loanDetails: this.fb.array([]),
     });
   }
 
@@ -80,6 +77,30 @@ export class ReactiveFormComponent {
       });
     console.log('yes');
   }
+
+  handleEmploymentStatusChanges() {
+    this.applicationForm
+      .get('employmentStatus')
+      ?.valueChanges.subscribe((status) => {
+        const workingDetails = this.applicationForm.get('workDetails');
+        const businessDetails = this.applicationForm.get('businessDetails');
+
+        if (status === 'working') {
+          workingDetails?.enable();
+          businessDetails?.disable();
+          businessDetails?.reset();
+        } else if (status === 'business') {
+          workingDetails?.disable();
+          businessDetails?.enable();
+          workingDetails?.reset();
+        } else {
+          workingDetails?.disable();
+          businessDetails?.disable();
+          workingDetails?.reset();
+          businessDetails?.reset();
+        }
+      });
+  }
   get martialStatusValue() {
     return this.applicationForm.get('martialStatus')?.value;
   }
@@ -97,19 +118,7 @@ export class ReactiveFormComponent {
     this.contacts.removeAt(idx);
   }
 
-  get loans(): FormArray {
-    return this.applicationForm.controls['loanDetails'] as FormArray;
-  }
-
-  addNewLoansForm() {
-    const loanForm = new FormGroup({
-      bankName: new FormControl(''),
-      loanAmount: new FormControl(''),
-      emi: new FormControl(''),
-    });
-    this.loans.push(loanForm);
-  }
-  removeLoanForm(idx: number) {
-    this.loans.removeAt(idx);
+  onSubmit() {
+    console.log(this.applicationForm.value);
   }
 }

@@ -67,7 +67,7 @@
               />
             </div>
           </div>
-          <div class="row g-3 mt-3">
+          <!-- <div class="row g-3 mt-3">
             <div class="col-md-7">
               <label for="martial-status" class="form-label"
                 >Martial Status</label
@@ -110,41 +110,48 @@
                 />
               </div>
             </div>
-          </div>
+          </div> -->
 
           <hr />
           <h3 class="mb-3 text-primary fw-bold heading">Job Details</h3>
           <div class="row">
             <div class="col-md-4">
-              <label for="isWorking" class="form-label">Is Working</label>
-              <select
-                id="isWorking"
-                formControlName="isWorking"
-                class="form-select border-2 shadow-sm"
-              >
-                <option value="">Select...</option>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-              </select>
+              <input
+                type="radio"
+                formControlName="employmentStatus"
+                value="working"
+                id="working"
+              />
+              <label for="working" class="form-label ms-2"> Working</label>
             </div>
 
             <div class="col-md-4">
-              <label for="business" class="form-label"
-                >Do you Own a Business</label
-              >
-              <select
+              <input
+                type="radio"
+                formControlName="employmentStatus"
+                value="business"
                 id="business"
-                formControlName="isOwnBusiness"
-                class="form-select border-2 shadow-sm"
+              />
+              <label for="business" class="form-label ms-2"> Business</label>
+            </div>
+            <div class="col-md-4">
+              <input
+                type="radio"
+                formControlName="employmentStatus"
+                value="unemployed"
+                id="unemployed"
+              />
+              <label for="unemployed" class="form-label ms-2">
+                Unemployed</label
               >
-                <option value="">Select...</option>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-              </select>
             </div>
           </div>
-          <div class="row mt-3" formGroupName="workDetails">
-            <div class="col-md-3">
+          <div
+            *ngIf="applicationForm.get('employmentStatus')?.value === 'working'"
+            class="row mt-3"
+            formGroupName="workDetails"
+          >
+            <div class="col-md-4">
               <label for="jobType" class="form-label">Select Job Type</label>
               <select
                 id="jobType"
@@ -156,21 +163,8 @@
                 <option value="Private Job">Private Job</option>
               </select>
             </div>
-            <div class="col-md-3">
-              <label for="company" class="form-label">Company</label>
-              <div class="input-group shadow-sm">
-                <span class="input-group-text bg-light"
-                  ><i class="bi bi-building"></i
-                ></span>
-                <input
-                  id="company"
-                  formControlName="companyName"
-                  class="form-control border-2"
-                  placeholder="Enter your company name"
-                />
-              </div>
-            </div>
-            <div class="col-md-3">
+
+            <div class="col-md-4">
               <label for="position" class="form-label">Position</label>
               <div class="input-group shadow-sm">
                 <span class="input-group-text bg-light"
@@ -184,7 +178,7 @@
                 />
               </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-4">
               <label for="salary" class="form-label">Salary</label>
               <div class="input-group shadow-sm">
                 <span class="input-group-text bg-light"
@@ -199,7 +193,12 @@
               </div>
             </div>
           </div>
-          <div formGroupName="businessDetails">
+          <div
+            *ngIf="
+              applicationForm.get('employmentStatus')?.value === 'business'
+            "
+            formGroupName="businessDetails"
+          >
             <div class="row mt-3">
               <div class="col-md-4">
                 <label for="company" class="form-label">Business Name</label>
@@ -262,7 +261,7 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-4 mt-4">
           <h3 class="mb-3 text-primary fw-bold heading">Contact Details</h3>
 
           <div class="row g-3">
@@ -283,7 +282,7 @@
               </div>
             </div>
             <div class="col-md-6">
-              <label for="businessEmail" class="form-label"
+              <label for="officialEmail" class="form-label"
                 >Official Email</label
               >
               <div class="input-group shadow-sm">
@@ -291,8 +290,8 @@
                   ><i class="bi bi-envelope"></i
                 ></span>
                 <input
-                  id="businessEmail"
-                  formControlName="businessEmail"
+                  id="officialEmail"
+                  formControlName="officialEmail"
                   class="form-control border-2"
                   placeholder="Enter official email"
                 />
@@ -346,77 +345,10 @@
       </div>
     </div>
     <hr />
-    <div class="mb-4">
-      <div class="row g-3">
-        <div class="col-lg-12">
-          <h5 class="mt-4 text-primary fw-bold heading text-center">
-            Add Lone Details
-          </h5>
-          <div class="row g-3">
-            <table class="table table-striped table-bordered">
-              <thead class="table-dark">
-                <tr>
-                  <th>Sr No</th>
-                  <th>Bank Name</th>
-                  <th>Loan Amount</th>
-                  <th>EMI</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody formArrayName="loanDetails">
-                @for( loan of loans.controls; track $index){
-                <tr [formGroupName]="$index">
-                  <td>{{ $index + 1 }}</td>
-                  <td>
-                    <input
-                      formControlName="bankName"
-                      class="form-control"
-                      placeholder="Enter Bank Name"
-                    />
-                  </td>
-                  <td>
-                    <input
-                      formControlName="loanAmount"
-                      type="number"
-                      class="form-control"
-                      placeholder="Enter Amount"
-                    />
-                  </td>
-                  <td>
-                    <input
-                      formControlName="emi"
-                      type="number"
-                      class="form-control"
-                      placeholder="Enter EMI"
-                    />
-                  </td>
-                  <td>
-                    <button
-                      (click)="removeLoanForm($index)"
-                      class="btn btn-danger btn-sm"
-                    >
-                      Remove
-                    </button>
-                  </td>
-                </tr>
 
-                }
-              </tbody>
-            </table>
-            <div class="d-flex justify-content-end">
-              <button
-                (click)="addNewLoansForm()"
-                class="btn btn-primary btn-sm mt-1"
-              >
-                Add More
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
     <div class="d-flex justify-content-center gap-2">
       <button
+        (click)="onSubmit()"
         class="btn text-white"
         style="background: linear-gradient(to right, #00c6ff, #0072ff)"
       >
