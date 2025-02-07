@@ -2,7 +2,7 @@
   <div class="row mb-5">
     <div class="col-12 mb-3">
       <h1>
-        Dependent Dropdown/Cascading dropdown
+        Dependent Dropdown/Cascading Dropdown
         <a
           target="_blank"
           href="https://github.com/devashishpatil23/practical-examples-angular/tree/main/src/app/pages/dependent-dropdown"
@@ -11,39 +11,99 @@
         >
       </h1>
     </div>
-    <div class="col-12 d-flex flex-column flex-md-row">
+
+    <div class="row mb-5">
+      <div>
+        <h3>With API Call</h3>
+      </div>
+
+      <div class="card p-4 shadow-sm">
+        <h5 class="mb-3">Filter Products</h5>
+
+        <!-- Category Dropdown -->
+        <div class="row">
+          <div class="mb-3 col-md-6">
+            <label for="category" class="form-label">Category:</label>
+            <select
+              (change)="onCategoryChange()"
+              [(ngModel)]="category"
+              id="category"
+              class="form-select"
+            >
+              <option value="" disabled>Select Category</option>
+
+              <option *ngFor="let item of categories" [value]="item">
+                {{ item }}
+              </option>
+            </select>
+          </div>
+          <div class="mb-3 col-md-6">
+            <label for="product" class="form-label">Product:</label>
+            <select id="product" class="form-select">
+              <option value="" disabled>Select Product</option>
+              <option *ngFor="let item of products" value="item">
+                {{ item.title | truncateWords : 4 }}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <br />
+    </div>
+
+    <h3>With static data</h3>
+    <div class="col-12 d-flex flex-column flex-md-row card">
       <div class="m-2">
         <!-- Client Dropdown -->
-        <label for="client">Client:</label>
-        <select id="client" [(ngModel)]="clientId" (change)="onClientChange()">
-          <option value="" disabled selected>Select Client</option>
+        <div class="form-group">
+          <label for="client" class="form-label fw-bold">Client:</label>
+          <select
+            id="client"
+            class="form-select"
+            [(ngModel)]="clientId"
+            (change)="onClientChange()"
+          >
+            <option value="" disabled selected>Select Client</option>
 
-          @for(client of clients; track $index) {
-          <option [value]="client.id">{{ client.name }}</option>
-          }
-        </select>
+            @for(client of clients; track $index) {
+            <option [value]="client.id">{{ client.name }}</option>
+            }
+          </select>
+        </div>
       </div>
 
       <div class="m-2">
         <!-- Site Dropdown -->
-        <label for="site">Sites:</label>
-        <select [(ngModel)]="siteName" (change)="onSiteChange()" id="site">
-          <option value="" disabled selected>Select Site</option>
-          @for(site of sites; track $index) {
-          <option [value]="site.name">{{ site.name }}</option>
-          }
-        </select>
+        <div class="form-group">
+          <label for="site" class="form-label fw-bold">Sites:</label>
+          <select
+            id="site"
+            class="form-select"
+            [(ngModel)]="siteName"
+            (change)="onSiteChange()"
+          >
+            <option value="" disabled selected>Select Site</option>
+
+            @for(site of sites; track $index) {
+            <option [value]="site.name">{{ site.name }}</option>
+            }
+          </select>
+        </div>
       </div>
 
       <div class="m-2">
-        <!-- Site Dropdown -->
-        <label for="site">Build:</label>
-        <select id="site">
-          <option value="" disabled selected>Select Build</option>
-          @for(build of builds; track $index) {
-          <option [value]="build">{{ build }}</option>
-          }
-        </select>
+        <!-- Build Dropdown -->
+        <div class="form-group">
+          <label for="build" class="form-label fw-bold">Build:</label>
+          <select id="build" class="form-select">
+            <option value="" disabled selected>Select Build</option>
+
+            @for(build of builds; track $index) {
+            <option [value]="build">{{ build }}</option>
+            }
+          </select>
+        </div>
       </div>
     </div>
   </div>
