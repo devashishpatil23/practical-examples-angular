@@ -1,0 +1,200 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-8 col-lg-7 mx-auto">
+      <form [formGroup]="myForm" class="card p-4 shadow-sm">
+        <h3 class="mb-4">Personal Details</h3>
+
+        <div class="row">
+          <div class="mb-3 col-md-6">
+            <label for="name" class="form-label">Name:</label>
+            <input
+              type="text"
+              id="name"
+              formControlName="name"
+              class="form-control"
+              required
+            />
+          </div>
+
+          <div class="mb-3 col-md-6">
+            <label for="lastName" class="form-label">last Name:</label>
+            <input
+              type="text"
+              id="lastName"
+              formControlName="lastName"
+              class="form-control"
+              required
+            />
+          </div>
+        </div>
+
+        <!-- Marital Status (Radio buttons) -->
+        <div class="mb-3">
+          <label class="form-label">Marital Status: </label>
+          <div>
+            <div class="form-check form-check-inline">
+              <input
+                type="radio"
+                id="single"
+                formControlName="maritalStatus"
+                value="single"
+                class="form-check-input"
+                name="maritalStatus"
+              />
+              <label for="single" class="form-check-label">Single</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                type="radio"
+                id="married"
+                formControlName="maritalStatus"
+                value="married"
+                class="form-check-input"
+                name="maritalStatus"
+              />
+              <label for="married" class="form-check-label">Married</label>
+            </div>
+          </div>
+        </div>
+
+        <div
+          *ngIf="myForm.get('maritalStatus')?.value === 'married'"
+          class="mb-3 col-md-6"
+        >
+          <label for="spouseName" class="form-label">Spouse Name:</label>
+          <input
+            type="text"
+            id="spouseName"
+            formControlName="spouseName"
+            class="form-control"
+            required
+          />
+        </div>
+
+        <!-- Address Section -->
+        <div class="mt-4">
+          <h4>Address</h4>
+          <div formGroupName="address" class="mb-3 row">
+            <div class="col-md-4 mb-2">
+              <label for="country" class="form-label">Country:</label>
+              <input
+                type="text"
+                id="country"
+                formControlName="country"
+                class="form-control"
+                required
+              />
+            </div>
+            <div class="col-md-4 mb-2">
+              <label for="state" class="form-label">State:</label>
+              <input
+                type="text"
+                id="state"
+                formControlName="state"
+                class="form-control"
+                required
+              />
+            </div>
+            <div class="col-md-4 mb-2">
+              <label for="city" class="form-label">City:</label>
+              <input
+                type="text"
+                id="city"
+                formControlName="city"
+                class="form-control"
+                required
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Phone Numbers Section -->
+
+        <div class="mt-4 col-md-7 col-lg-6 mb-3">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4>Phone Numbers</h4>
+            <button
+              *ngIf="getPhoneFormArray.controls.length < 3"
+              (click)="addPhone()"
+              type="button"
+              class="btn btn-link"
+            >
+              Add +
+            </button>
+          </div>
+
+          <div formArrayName="phoneNumbers" class="mb-3">
+            <div
+              *ngFor="let item of getPhoneFormArray.controls; let i = index"
+              class="mb-2"
+            >
+              <div
+                class="d-flex justify-content-between align-items-center"
+                [formGroupName]="i"
+              >
+                <input
+                  type="text"
+                  placeholder="Phone Number"
+                  class="form-control me-2"
+                  required
+                  formControlName="phNum"
+                />
+                <button
+                  *ngIf="getPhoneFormArray.controls.length > 1"
+                  (click)="removePhone(i)"
+                  type="button"
+                  class="btn btn-danger"
+                >
+                  <i class="bi bi-x-circle"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Checkbox to toggle email requirement -->
+        <div class="mb-3 form-check">
+          <input
+            type="checkbox"
+            id="hasEmail"
+            formControlName="hasEmail"
+            class="form-check-input"
+          />
+          <label for="hasEmail" class="form-check-label"
+            >Do you have an email?</label
+          >
+        </div>
+
+        <!-- Email field (Shown only if hasEmail is checked) -->
+        <div *ngIf="myForm.get('hasEmail')?.value" class="mb-3">
+          <label for="email" class="form-label">Email:</label>
+          <input
+            type="email"
+            id="email"
+            formControlName="email"
+            class="form-control"
+            required
+          />
+        </div>
+
+        <!-- Submit Button -->
+        <div class="mt-4 d-flex justify-content-end">
+          <button
+            [disabled]="!myForm.valid"
+            (click)="onSubmit()"
+            type="submit"
+            class="btn btn-success"
+          >
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <div *ngIf="FormData" class="mt-4 col-md-4 col-lg-5">
+      <h4>Submitted Data</h4>
+      <pre>{{ FormData | json }}</pre>
+      <!-- Display data as JSON -->
+    </div>
+  </div>
+</div>

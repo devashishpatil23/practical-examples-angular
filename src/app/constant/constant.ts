@@ -1,7 +1,11 @@
 export const componentsData = [
   {
-    label: 'Basic reactive form',
+    label: 'Basic reactive form with custom validation',
     routerLink: '/basic-reactive-form',
+  },
+  {
+    label: 'Dynamic form',
+    routerLink: '/dynamic-form',
   },
   {
     label: '@HostListener',

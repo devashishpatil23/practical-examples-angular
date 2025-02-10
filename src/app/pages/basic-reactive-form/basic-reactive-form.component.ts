@@ -42,7 +42,7 @@ export class BasicReactiveFormComponent {
 
   onSubmit() {
     this.myForm.reset();
-    confirm('Formed Saved!');
+    alert('Formed Saved!');
     this.router.navigate(['/']);
   }
 }

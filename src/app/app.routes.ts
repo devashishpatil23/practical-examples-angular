@@ -5,10 +5,11 @@ import { DependentDropdownComponent } from './pages/dependent-dropdown/dependent
 import { ServeSideFilterPaginationComponent } from './pages/serve-side-filter-pagination/serve-side-filter-pagination.component';
 import { InlineEditingComponent } from './pages/inline-editing/inline-editing.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
+import { ReactiveFormComponent } from './pages/reactive-form/reactive-form.component';
 import { ToolTipComponent } from './pages/tool-tip/tool-tip.component';
 import { CopyToClipboardComponent } from './pages/copy-to-clipboard/copy-to-clipboard.component';
 import { BasicReactiveFormComponent } from './pages/basic-reactive-form/basic-reactive-form.component';
+import { DynamicFormComponent } from './pages/dynamic-form/dynamic-form.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -38,6 +39,10 @@ export const routes: Routes = [
   {
     path: 'basic-reactive-form',
     component: BasicReactiveFormComponent,
+  },
+  {
+    path: 'dynamic-form',
+    component: DynamicFormComponent,
   },
   { path: '**', component: HomeComponent },
 ];
