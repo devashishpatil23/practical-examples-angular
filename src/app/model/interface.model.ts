@@ -9,7 +9,7 @@ export interface PhoneNumber {
 }
 
 export interface PersonalDetails {
-  name: string;
+  firstName: string;
   lastName: string;
   maritalStatus: 'single' | 'married';
   spouseName?: string;
@@ -17,4 +17,11 @@ export interface PersonalDetails {
   phoneNumber: PhoneNumber[];
   hasEmail: boolean;
   email?: string;
+}
+
+export interface todo {
+  todo: string;
+  priority: string;
+  id: number;
+  isChecked: boolean;
 }

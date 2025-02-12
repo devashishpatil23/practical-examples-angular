@@ -4,8 +4,12 @@ export const componentsData = [
     routerLink: '/basic-reactive-form',
   },
   {
-    label: 'Dynamic form',
+    label: 'Dynamic reactive form',
     routerLink: '/dynamic-form',
+  },
+  {
+    label: 'Todo List  ',
+    routerLink: '/todo-list',
   },
   {
     label: '@HostListener',

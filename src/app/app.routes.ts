@@ -10,6 +10,7 @@ import { ToolTipComponent } from './pages/tool-tip/tool-tip.component';
 import { CopyToClipboardComponent } from './pages/copy-to-clipboard/copy-to-clipboard.component';
 import { BasicReactiveFormComponent } from './pages/basic-reactive-form/basic-reactive-form.component';
 import { DynamicFormComponent } from './pages/dynamic-form/dynamic-form.component';
+import { TodoListComponent } from './pages/todo-list/todo-list.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -43,6 +44,10 @@ export const routes: Routes = [
   {
     path: 'dynamic-form',
     component: DynamicFormComponent,
+  },
+  {
+    path: 'todo-list',
+    component: TodoListComponent,
   },
   { path: '**', component: HomeComponent },
 ];

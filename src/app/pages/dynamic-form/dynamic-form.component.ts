@@ -28,7 +28,7 @@ export class DynamicFormComponent implements OnInit {
 
   intializeForm() {
     this.myForm = this.fb.group({
-      name: ['', Validators.required],
+      firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       maritalStatus: ['single', Validators.required],
       spouseName: [''],

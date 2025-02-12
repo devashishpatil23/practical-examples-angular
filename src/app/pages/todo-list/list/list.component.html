@@ -1,0 +1,38 @@
+<table class="table table-bordered text-center">
+  <thead class="table-light">
+    <tr>
+      <th>Status</th>
+      <th>Task</th>
+      <th>Priority</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for(todo of todoList; track $index){
+    <tr>
+      <td>
+        <input
+          type="checkbox"
+          [checked]="todo.isChecked"
+          class="form-check-input"
+          (change)="isChecked(todo)"
+        />
+      </td>
+      <td [ngClass]="{ completed: todo.isChecked }">{{ todo.todo }}</td>
+      <td [ngClass]="{ completed: todo.isChecked }">{{ todo.priority }}</td>
+      <td>
+        <button
+          [disabled]="todo.isChecked"
+          (click)="onEdit(todo)"
+          class="btn btn-warning btn-sm me-2"
+        >
+          <i class="bi bi-pencil-square"></i>
+        </button>
+        <button (click)="onDelete(todo.id)" class="btn btn-danger btn-sm">
+          <i class="bi bi-trash m"></i>
+        </button>
+      </td>
+    </tr>
+    }
+  </tbody>
+</table>
