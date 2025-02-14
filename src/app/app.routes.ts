@@ -11,6 +11,7 @@ import { CopyToClipboardComponent } from './pages/copy-to-clipboard/copy-to-clip
 import { BasicReactiveFormComponent } from './pages/basic-reactive-form/basic-reactive-form.component';
 import { DynamicFormComponent } from './pages/dynamic-form/dynamic-form.component';
 import { TodoListComponent } from './pages/todo-list/todo-list.component';
+import { UsernameAsyncValidatorComponent } from './pages/username-async-validator/username-async-validator.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -44,6 +45,10 @@ export const routes: Routes = [
   {
     path: 'dynamic-form',
     component: DynamicFormComponent,
+  },
+  {
+    path: 'unique-username',
+    component: UsernameAsyncValidatorComponent,
   },
   {
     path: 'todo-list',

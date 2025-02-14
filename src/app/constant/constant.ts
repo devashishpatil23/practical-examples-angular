@@ -8,6 +8,10 @@ export const componentsData = [
     routerLink: '/dynamic-form',
   },
   {
+    label: 'Unique Username async validation',
+    routerLink: '/unique-username',
+  },
+  {
     label: 'Todo List  ',
     routerLink: '/todo-list',
   },
