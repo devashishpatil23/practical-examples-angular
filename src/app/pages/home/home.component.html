@@ -1,16 +1,22 @@
-<div class="container">
-  <div class="row">
-    <div class="col-12">
-      <ul>
-        @for(item of componentsData; track $index){
-        <a
-          [routerLink]="item.routerLink"
-          class="text-dark text-decoration-none"
-        >
-          <li class="mb-2">{{ item.label }}</li></a
-        >
-        }
-      </ul>
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-12 col-lg-8">
+      <div class="card shadow-sm border-0">
+        <div class="card-body">
+          <ul class="list-group">
+            @for (item of componentsData; track $index) {
+            <a
+              [routerLink]="item.routerLink"
+              class="text-dark text-decoration-none"
+            >
+              <li class="list-group-item list-group-item-action">
+                {{ item.label }}
+              </li></a
+            >
+            }
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </div>

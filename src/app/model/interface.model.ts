@@ -1,3 +1,5 @@
+import { Observable } from 'rxjs';
+
 export interface Adreess {
   country: string;
   state: string;
@@ -24,4 +26,8 @@ export interface todo {
   priority: string;
   id: number;
   isChecked: boolean;
+}
+
+export interface IDeactivateComponent {
+  canExit: () => boolean | Observable<boolean> | Promise<boolean>;
 }

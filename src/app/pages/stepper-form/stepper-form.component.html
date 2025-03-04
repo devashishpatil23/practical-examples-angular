@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="progress-bar" [style.width.%]="progress"></div>
+
+  <div class="tabs">
+    <div
+      class="tab"
+      *ngFor="let step of steps; let i = index"
+      [class.active]="i === activeStep"
+      (click)="goToStep(i)"
+    >
+      Step {{ i + 1 }}
+    </div>
+  </div>
+
+  <div class="step-content">
+    <ng-container *ngIf="activeStep === 0">Content for Step 1</ng-container>
+    <ng-container *ngIf="activeStep === 1">Content for Step 2</ng-container>
+    <ng-container *ngIf="activeStep === 2">Content for Step 3</ng-container>
+  </div>
+
+  <div class="controls">
+    <button (click)="previous()" [disabled]="activeStep === 0">Previous</button>
+    <button (click)="next()" [disabled]="activeStep === steps.length - 1">
+      Next
+    </button>
+  </div>
+</div>

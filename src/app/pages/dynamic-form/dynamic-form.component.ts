@@ -9,6 +9,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { PersonalDetails } from '../../model/interface.model';
+import { CanDeactivate } from '@angular/router';
 
 @Component({
   selector: 'app-dynamic-form',
@@ -20,32 +21,17 @@ export class DynamicFormComponent implements OnInit {
   fb = inject(FormBuilder);
   myForm: FormGroup = new FormGroup({});
   FormData!: PersonalDetails;
+  isFormSubmited: boolean = false;
 
   ngOnInit() {
     this.intializeForm();
     this.onFormValueChanges();
   }
 
-  intializeForm() {
-    this.myForm = this.fb.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      maritalStatus: ['single', Validators.required],
-      spouseName: [''],
-      address: this.fb.group({
-        country: ['', Validators.required],
-        state: ['', Validators.required],
-        city: ['', Validators.required],
-      }),
-      phoneNumbers: this.fb.array([]),
-      hasEmail: [false],
-      email: [''],
-    });
-    this.addPhone();
-  }
-
   onSubmit() {
     this.FormData = this.myForm.value;
+    this.myForm.reset();
+    this.isFormSubmited = true;
   }
   get getPhoneFormArray(): FormArray {
     return this.myForm.get('phoneNumbers') as FormArray;
@@ -81,5 +67,29 @@ export class DynamicFormComponent implements OnInit {
       }
       emailFormControlName?.updateValueAndValidity();
     });
+  }
+
+  intializeForm() {
+    this.myForm = this.fb.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      maritalStatus: ['single', Validators.required],
+      spouseName: [''],
+      address: this.fb.group({
+        country: ['', Validators.required],
+        state: ['', Validators.required],
+        city: ['', Validators.required],
+      }),
+      phoneNumbers: this.fb.array([]),
+      hasEmail: [false],
+      email: [''],
+    });
+    this.addPhone();
+  }
+
+  canExit(): boolean {
+    return this.myForm.dirty && !this.isFormSubmited
+      ? confirm('Are you sure you want leave this page ?')
+      : true;
   }
 }

@@ -1,0 +1,49 @@
+<div class="container mt-4">
+    <div class="row">
+      <div>
+        <h5 class="text-center">
+          Searched users result with api call, Used RxJS , debounceTime(),
+          switchMap()
+        </h5>
+      </div>
+      <div class="col-md-6 offset-md-3 mt-3">
+        <div class="form-group">
+          <form [formGroup]="searchForm">
+            <input
+              type="text"
+              formControlName="search"
+              class="form-control"
+              placeholder="Search GitHub Users..."
+            />
+          </form>
+        </div>
+  
+        <!-- Loading Indicator -->
+        <div *ngIf="loading()" class="text-center mt-3">
+          <span>Loading...</span>
+        </div>
+  
+        <!-- User List -->
+        <ul class="list-group mt-3">
+          <li
+            *ngFor="let user of users()"
+            class="list-group-item d-flex align-items-center"
+          >
+            <img
+              [src]="user.avatar_url"
+              class="rounded-circle me-3"
+              width="40"
+              height="40"
+            />
+            <a
+              [href]="user.html_url"
+              target="_blank"
+              class="text-decoration-none"
+              >{{ user.login }}</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  

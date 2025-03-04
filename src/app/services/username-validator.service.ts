@@ -5,7 +5,13 @@ import {
   AsyncValidatorFn,
   ValidationErrors,
 } from '@angular/forms';
-import { catchError, debounceTime, Observable, of, switchMap } from 'rxjs';
+import {
+  debounceTime,
+  distinctUntilChanged,
+  Observable,
+  of,
+  switchMap,
+} from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -19,15 +25,13 @@ export class UsernameValidatorService {
     return (control: AbstractControl): Observable<ValidationErrors | null> => {
       return this.http.get<any[]>(this.apiUrl).pipe(
         debounceTime(500),
+        distinctUntilChanged(),
         switchMap((users) => {
-          console.log('helllo');
           const usernameExits = users.some(
             (user) => user.username === control.value
           );
-          console.log(usernameExits);
           return usernameExits ? of({ usernameTaken: true }) : of(null);
         })
-        // catchError(() => of(null))
       );
     };
   }

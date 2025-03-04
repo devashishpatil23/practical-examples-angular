@@ -1,15 +1,19 @@
 export const componentsData = [
   {
-    label: 'Basic reactive form with custom validation',
+    label: 'Reactive form with custom validation',
     routerLink: '/basic-reactive-form',
   },
   {
-    label: 'Dynamic reactive form',
+    label: 'Dynamic reactive form and CanDeactivate Route Guard Implimentation',
     routerLink: '/dynamic-form',
   },
   {
     label: 'Unique Username async validation',
     routerLink: '/unique-username',
+  },
+  {
+    label: 'Search users input, with api call',
+    routerLink: '/search-users-input',
   },
   {
     label: 'Todo List  ',
@@ -43,4 +47,12 @@ export const componentsData = [
     label: 'Reactive form',
     routerLink: '/reactive-form',
   },
+  {
+    label: 'Change Detection',
+    routerLink: '/change-detection',
+  },
+  // {
+  //   label: 'Stepper Form',
+  //   routerLink: '/stepper-form',
+  // },
 ];
