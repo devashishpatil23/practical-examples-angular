@@ -19,6 +19,8 @@ import { ConcatMapComponent } from './pages/rxjs/concat-map/concat-map.component
 import { StepperFormComponent } from './pages/stepper-form/stepper-form.component';
 import { ChangeDetectionComponent } from './pages/change-detection/change-detection.component';
 import { canDeactivateGuard } from './guards/can-deactivate.guard';
+import { ResolveRouteGuardComponent } from './pages/resolve-route-guard/resolve-route-guard.component';
+import { myResolverResolver } from './services/resolvers/my-resolver.resolver';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -81,6 +83,11 @@ export const routes: Routes = [
   {
     path: 'concat-map',
     component: ConcatMapComponent,
+  },
+  {
+    path: 'resolve-route',
+    component: ResolveRouteGuardComponent,
+    resolve: { data: myResolverResolver },
   },
   { path: '**', component: HomeComponent },
 ];

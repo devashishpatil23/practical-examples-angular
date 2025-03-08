@@ -51,6 +51,10 @@ export const componentsData = [
     label: 'Change Detection',
     routerLink: '/change-detection',
   },
+  {
+    label: 'Resolve Route Guard',
+    routerLink: '/resolve-route',
+  },
   // {
   //   label: 'Stepper Form',
   //   routerLink: '/stepper-form',
