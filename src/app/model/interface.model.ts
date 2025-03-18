@@ -31,3 +31,4 @@ export interface todo {
 export interface IDeactivateComponent {
   canExit: () => boolean | Observable<boolean> | Promise<boolean>;
 }
+

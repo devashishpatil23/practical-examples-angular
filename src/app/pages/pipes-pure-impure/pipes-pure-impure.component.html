@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6 mb-4">
+      <h3>Pure pipe - creating new instances of array</h3>
+      <button (click)="onAdd()" class="btn btn-primary mb-2">
+        Add Products
+      </button>
+      <ul>
+        @for (item of products; track $index) {
+        <li>{{ item }}</li>
+        }
+      </ul>
+      <p>Total products - {{ products | purePipe }}</p>
+    </div>
+    <div class="col-lg-6 mb-4">
+      <h3>Impure pipe -</h3>
+      <button (click)="updateAge()" class="btn btn-primary mb-2">
+        User data - mutating data directly
+      </button>
+
+      <p>User Deatils {{ user | impurePipe }}</p>
+    </div>
+  </div>
+</div>

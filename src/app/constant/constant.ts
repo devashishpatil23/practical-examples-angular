@@ -35,18 +35,7 @@ export const componentsData = [
     label: 'Dependent dropdown',
     routerLink: '/dependent-dropdown',
   },
-  // {
-  //   label: 'Server side pagination, filter, sorting',
-  //   routerLink: '/server-side-filter-pagination',
-  // },
-  // {
-  //   label: 'Inline form editing',
-  //   routerLink: '/inline-form-editing',
-  // },
-  {
-    label: 'Reactive form',
-    routerLink: '/reactive-form',
-  },
+
   {
     label: 'Change Detection',
     routerLink: '/change-detection',
@@ -55,8 +44,29 @@ export const componentsData = [
     label: 'Resolve Route Guard',
     routerLink: '/resolve-route',
   },
+
+  {
+    label: 'Pipes Pure and Impure',
+    routerLink: '/pipes-pure-impure',
+  },
+  {
+    label: 'Custom Pipes',
+    routerLink: '/custom-pipes',
+  },
   // {
   //   label: 'Stepper Form',
   //   routerLink: '/stepper-form',
+  // },
+  // {
+  //   label: 'Server side pagination, filter, sorting',
+  //   routerLink: '/server-side-filter-pagination',
+  // },
+  // {
+  //   label: 'Inline form editing',
+  //   routerLink: '/inline-form-editing',
+  // },
+  // {
+  //   label: 'Role based login',
+  //   routerLink: '/rolebasedlogin/login',
   // },
 ];

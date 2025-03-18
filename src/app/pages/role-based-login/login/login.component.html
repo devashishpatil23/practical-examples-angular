@@ -1,0 +1,55 @@
+<div
+  class="container d-flex justify-content-center align-items-start vh-100 pt-5"
+>
+  <div class="card p-4 shadow-lg mt-5" style="width: 350px">
+    <h3 class="text-center mb-4">Login</h3>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="userName" class="form-label">Username</label>
+        <input
+          type="text"
+          class="form-control"
+          id="userName"
+          formControlName="userName"
+          placeholder="Enter username"
+        />
+        <div
+          class="text-danger"
+          *ngIf="
+            loginForm.get('userName')?.invalid &&
+            loginForm.get('userName')?.touched
+          "
+        >
+          Username is required (min 3 characters)
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          formControlName="password"
+          placeholder="Enter password"
+        />
+        <div
+          class="text-danger"
+          *ngIf="
+            loginForm.get('password')?.invalid &&
+            loginForm.get('password')?.touched
+          "
+        >
+          Password must be at least 6 characters long
+        </div>
+      </div>
+      <button
+        type="submit"
+        class="btn btn-primary w-100"
+        [disabled]="loginForm.invalid"
+      >
+        Login
+      </button>
+    </form>
+  </div>
+</div>
+

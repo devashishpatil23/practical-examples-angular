@@ -21,6 +21,16 @@ import { ChangeDetectionComponent } from './pages/change-detection/change-detect
 import { canDeactivateGuard } from './guards/can-deactivate.guard';
 import { ResolveRouteGuardComponent } from './pages/resolve-route-guard/resolve-route-guard.component';
 import { myResolverResolver } from './services/resolvers/my-resolver.resolver';
+import { RoleBasedLoginComponent } from './pages/role-based-login/role-based-login.component';
+import { MyApplicationsComponent } from './pages/role-based-login/my-applications/my-applications.component';
+import { LoanApplicationsComponent } from './pages/role-based-login/loan-applications/loan-applications.component';
+import { ChangePasswordComponent } from './pages/role-based-login/change-password/change-password.component';
+import { ApprovalsComponent } from './pages/role-based-login/approvals/approvals.component';
+import { CustomersComponent } from './pages/role-based-login/customers/customers.component';
+import { ApprovedApplicationsComponent } from './pages/role-based-login/approved-applications/approved-applications.component';
+import { LoginComponent } from './pages/role-based-login/login/login.component';
+import { PipesPureImpureComponent } from './pages/pipes-pure-impure/pipes-pure-impure.component';
+import { CustomPipesComponent } from './pages/custom-pipes/custom-pipes.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -89,5 +99,48 @@ export const routes: Routes = [
     component: ResolveRouteGuardComponent,
     resolve: { data: myResolverResolver },
   },
+  {
+    path: 'pipes-pure-impure',
+    component: PipesPureImpureComponent,
+  },
+  {
+    path: 'custom-pipes',
+    component: CustomPipesComponent,
+  },
+  {
+    path: 'rolebasedlogin',
+    component: RoleBasedLoginComponent,
+    children: [
+      {
+        path: 'login',
+        component: LoginComponent,
+      },
+      {
+        path: 'my-applications',
+        component: MyApplicationsComponent,
+      },
+      {
+        path: 'approved-applications',
+        component: ApprovedApplicationsComponent,
+      },
+      {
+        path: 'loan-applications',
+        component: LoanApplicationsComponent,
+      },
+      {
+        path: 'change-password',
+        component: ChangePasswordComponent,
+      },
+      {
+        path: 'approvals',
+        component: ApprovalsComponent,
+      },
+      {
+        path: 'custmores',
+        component: CustomersComponent,
+      },
+    ],
+  },
+
   { path: '**', component: HomeComponent },
 ];
