@@ -38,3 +38,20 @@ export const clients = [
     ],
   },
 ];
+
+export const floorplansData: any[] = [
+  {
+    id: 1,
+    name: '1BHK Deluxe',
+    areaSqFt: 700,
+    totalPrice: 140000,
+    availableUnits: 8,
+  },
+  {
+    id: 2,
+    name: '2BHK Premium',
+    areaSqFt: 1000,
+    totalPrice: 200000,
+    availableUnits: 15,
+  },
+];

@@ -1,0 +1,55 @@
+<div class="container mt-5">
+  <h2 class="text-center mb-4 text-primary">Available Floorplans</h2>
+  <div class="row g-4">
+    <div *ngFor="let floorplan of floorplansList" class="col-md-6 col-lg-4">
+      <div class="card shadow-lg border-0">
+        <div class="card-body">
+          <h4 class="card-title text-primary">
+            {{ floorplan.name }}
+          </h4>
+          <p class="text-muted mb-1">
+            <i class="bi bi-rulers"></i> Area:
+            <strong>{{ floorplan.areaSqFt }}</strong> sq.ft.
+          </p>
+          <p class="fw-bold text-success mb-1">
+            <i class="bi bi-currency-dollar"></i> Price: ${{
+              floorplan.totalPrice.toLocaleString()
+            }}
+          </p>
+          <p class="mb-1">
+            <i class="bi bi-house-door"></i> Available Units:
+            <span class="badge bg-secondary">{{
+              floorplan.availableUnits
+            }}</span>
+          </p>
+          <p class="mb-3">
+            <i class="bi bi-bar-chart"></i> Price per sq.ft.:
+            <span class="badge bg-info"
+              >${{ floorplan.pricePerSqFt.toFixed(2) }}</span
+            >
+          </p>
+          <p *ngIf="floorplan.lowAvailability" class="text-danger fw-bold">
+            ⚠️ Low Availability!
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-md-10 mx-auto">
+      <h3 class="text-center text-secondary">Map Operator Implementations</h3>
+      <ul class="list-group mt-3">
+        <li class="list-group-item">
+          <strong>RxJS map Operator:</strong> Used the <code>map</code> operator
+          to transform the incoming floorplan data before binding it to the UI.
+        </li>
+        <li class="list-group-item">
+          <strong>Computed Properties:</strong> Enhanced each floorplan object
+          by adding computed values like <code>pricePerSqFt</code> and
+          <code>lowAvailability</code> without mutating the original dataset.
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

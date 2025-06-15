@@ -1,0 +1,33 @@
+<div class="container mt-3">
+  <div class="form-check mb-3">
+    <input
+      class="form-check-input"
+      type="checkbox"
+      (change)="onRoleChange('admin', $event)"
+      id="adminCheckbox"
+    />
+    <label class="form-check-label" for="adminCheckbox"> Admin </label>
+  </div>
+
+  <div class="form-check mb-3">
+    <input
+      class="form-check-input"
+      type="checkbox"
+      (change)="onRoleChange('customer', $event)"
+      id="customerCheckbox"
+    />
+    <label class="form-check-label" for="customerCheckbox"> Customer </label>
+  </div>
+
+  <p class="fw-bold">
+    Roles: <span *ngFor="let role of roles">{{ role }} | </span>
+  </p>
+
+  <div class="row mt-5">
+    <div [appHasRole]="['guest']" class="col-md-4">For guest</div>
+    <div [appHasRole]="['admin']" class="col-md-4">Admin</div>
+    <div [appHasRole]="['customer', 'guest']" class="col-md-4">
+      For customer and guest
+    </div>
+  </div>
+</div>

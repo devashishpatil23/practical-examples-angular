@@ -1,0 +1,31 @@
+<div class="container">
+  <form [formGroup]="todoForm" class="p-3 border rounded shadow-sm bg-light">
+    <div class="row">
+      <div class="col-5 mb-3">
+        <input
+          formControlName="todo"
+          type="text"
+          class="form-control"
+          placeholder="Enter task"
+        />
+      </div>
+      <div class="col-5 mb-3">
+        <select formControlName="priority" class="form-select">
+          <option disabled selected>Priority</option>
+          <option value="high">High</option>
+          <option value="mid">Mid</option>
+          <option value="low">Low</option>
+        </select>
+      </div>
+      <div class="col-2">
+        <button
+          [disabled]="!todoForm.valid"
+          (click)="onSubmit()"
+          class="btn btn-primary"
+        >
+          {{ editTodo ? "Edit" : "Add" }}
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

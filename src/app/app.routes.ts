@@ -31,10 +31,14 @@ import { ApprovedApplicationsComponent } from './pages/role-based-login/approved
 import { LoginComponent } from './pages/role-based-login/login/login.component';
 import { PipesPureImpureComponent } from './pages/pipes-pure-impure/pipes-pure-impure.component';
 import { CustomPipesComponent } from './pages/custom-pipes/custom-pipes.component';
+import { MapOperatorComponent } from './pages/map-operator/map-operator.component';
+import { RoleBasedUiCustomDirectiveComponent } from './pages/role-based-ui-custom-directive/role-based-ui-custom-directive.component';
+import { PracticeTodoComponent } from './pages/practice-todo/practice-todo.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
+  { path: 'practice-todo', component: PracticeTodoComponent },
   { path: 'hostlistner', component: HostListnerComponent },
   { path: 'dependent-dropdown', component: DependentDropdownComponent },
   {
@@ -56,6 +60,10 @@ export const routes: Routes = [
   {
     path: 'copy-to-clipboard',
     component: CopyToClipboardComponent,
+  },
+  {
+    path: 'role-based-ui-visible-custom-directive',
+    component: RoleBasedUiCustomDirectiveComponent,
   },
   {
     path: 'basic-reactive-form',
@@ -81,6 +89,10 @@ export const routes: Routes = [
   {
     path: 'search-users-input',
     component: SearchUsersComponent,
+  },
+  {
+    path: 'map-operator',
+    component: MapOperatorComponent,
   },
   {
     path: 'change-detection',

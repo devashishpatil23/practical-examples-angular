@@ -1,5 +1,9 @@
 export const componentsData = [
   {
+    label: 'practice-todo',
+    routerLink: '/practice-todo',
+  },
+  {
     label: 'Reactive form with custom validation',
     routerLink: '/basic-reactive-form',
   },
@@ -12,8 +16,12 @@ export const componentsData = [
     routerLink: '/unique-username',
   },
   {
-    label: 'Search users input, with api call',
+    label: 'Search users with api call - Rxjs switchMap',
     routerLink: '/search-users-input',
+  },
+  {
+    label: 'Rxjs map operator',
+    routerLink: '/map-operator',
   },
   {
     label: 'Todo List  ',
@@ -26,6 +34,10 @@ export const componentsData = [
   {
     label: 'Tool Tip Custom Directive',
     routerLink: '/tool-tip',
+  },
+  {
+    label: 'Role Based UI visbility Custom Directive',
+    routerLink: '/role-based-ui-visible-custom-directive',
   },
   {
     label: 'Copy to clipboard Custom Directive',
