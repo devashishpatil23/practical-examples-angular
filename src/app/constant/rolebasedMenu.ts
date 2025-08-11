@@ -26,5 +26,6 @@ export const menus = {
       path: 'change-password',
       title: 'Change Password',
     },
+   
   ],
 };

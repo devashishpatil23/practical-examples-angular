@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { TodoListService } from '../../../services/todo-list.service';
+import { TodoListService } from '../todo-list.service';
 import { CommonModule } from '@angular/common';
 import { todo } from '../../../model/interface.model';
 

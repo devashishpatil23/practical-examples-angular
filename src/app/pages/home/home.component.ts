@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { componentsData } from '../../constant/constant';
+import { menuList } from '../../constant/constant';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -9,5 +9,5 @@ import { RouterLink } from '@angular/router';
   styleUrl: './home.component.scss',
 })
 export class HomeComponent {
-  componentsData = componentsData;
+  componentsData = menuList;
 }

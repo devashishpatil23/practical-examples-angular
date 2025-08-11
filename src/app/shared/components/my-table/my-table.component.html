@@ -1,0 +1,27 @@
+<table class="table table-bordered table-striped table-hover">
+  <thead class="table-dark">
+    <tr>
+      <th>Sr</th>
+      @for (item of colArray; track $index) {
+      <th>{{ item }}</th>
+      }
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (item of gridData; track $index) {
+    <tr>
+      <td>{{ $index + 1 }}</td>
+      @for (col of colArray; track $index) {
+      <td>{{ item[col] }}</td>
+      }
+      <td>
+        <button (click)="editData(item)" class="btn btn-sm btn-primary">
+          Edit
+        </button>
+        <button (click)="deleteData(item)" class="btn btn-sm btn-danger mx-2">Delete</button>
+      </td>
+    </tr>
+    }
+  </tbody>
+</table>

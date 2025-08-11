@@ -34,6 +34,9 @@ import { CustomPipesComponent } from './pages/custom-pipes/custom-pipes.componen
 import { MapOperatorComponent } from './pages/map-operator/map-operator.component';
 import { RoleBasedUiCustomDirectiveComponent } from './pages/role-based-ui-custom-directive/role-based-ui-custom-directive.component';
 import { PracticeTodoComponent } from './pages/practice-todo/practice-todo.component';
+import { PracticeComponent } from './pages/practice/practice.component';
+import { DynamicFormWithJsonDataComponent } from './pages/dynamic-form-with-json-data/dynamic-form-with-json-data.component';
+import { DynamicTableComponent } from './pages/dynamic-table/dynamic-table.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -48,6 +51,14 @@ export const routes: Routes = [
   {
     path: 'inline-form-editing',
     component: InlineEditingComponent,
+  },
+  {
+    path: 'dynamic-form-with-json-data',
+    component: DynamicFormWithJsonDataComponent,
+  },
+  {
+    path: 'practice',
+    component: PracticeComponent,
   },
   {
     path: 'reactive-form',
@@ -83,7 +94,7 @@ export const routes: Routes = [
     component: StepperFormComponent,
   },
   {
-    path: 'todo-list',
+    path: 'basic-todo',
     component: TodoListComponent,
   },
   {
@@ -118,6 +129,10 @@ export const routes: Routes = [
   {
     path: 'custom-pipes',
     component: CustomPipesComponent,
+  },
+  {
+    path: 'dynamicTable',
+    component: DynamicTableComponent,
   },
   {
     path: 'rolebasedlogin',

@@ -1,7 +1,7 @@
-export const componentsData = [
+export const menuList = [
   {
-    label: 'practice-todo',
-    routerLink: '/practice-todo',
+    label: 'Basic todo',
+    routerLink: '/basic-todo',
   },
   {
     label: 'Reactive form with custom validation',
@@ -23,10 +23,7 @@ export const componentsData = [
     label: 'Rxjs map operator',
     routerLink: '/map-operator',
   },
-  {
-    label: 'Todo List  ',
-    routerLink: '/todo-list',
-  },
+
   {
     label: '@HostListener',
     routerLink: '/hostlistner',
@@ -35,10 +32,10 @@ export const componentsData = [
     label: 'Tool Tip Custom Directive',
     routerLink: '/tool-tip',
   },
-  {
-    label: 'Role Based UI visbility Custom Directive',
-    routerLink: '/role-based-ui-visible-custom-directive',
-  },
+  // {
+  //   label: 'Role Based UI visbility Custom Directive',
+  //   routerLink: '/role-based-ui-visible-custom-directive',
+  // },
   {
     label: 'Copy to clipboard Custom Directive',
     routerLink: '/copy-to-clipboard',
@@ -49,36 +46,28 @@ export const componentsData = [
   },
 
   {
-    label: 'Change Detection',
-    routerLink: '/change-detection',
-  },
-  {
     label: 'Resolve Route Guard',
     routerLink: '/resolve-route',
   },
 
-  {
-    label: 'Pipes Pure and Impure',
-    routerLink: '/pipes-pure-impure',
-  },
+  // {
+  //   label: 'Pipes Pure and Impure',
+  //   routerLink: '/pipes-pure-impure',
+  // },
   {
     label: 'Custom Pipes',
     routerLink: '/custom-pipes',
   },
   // {
-  //   label: 'Stepper Form',
-  //   routerLink: '/stepper-form',
+  //   label: 'Dynamic form using JSON data',
+  //   routerLink: '/dynamic-form-with-json-data',
   // },
   // {
-  //   label: 'Server side pagination, filter, sorting',
-  //   routerLink: '/server-side-filter-pagination',
+  //   label: 'Dynamic Table',
+  //   routerLink: '/dynamicTable',
   // },
   // {
-  //   label: 'Inline form editing',
-  //   routerLink: '/inline-form-editing',
-  // },
-  // {
-  //   label: 'Role based login',
-  //   routerLink: '/rolebasedlogin/login',
+  //   label: 'Change Detection',
+  //   routerLink: '/change-detection',
   // },
 ];

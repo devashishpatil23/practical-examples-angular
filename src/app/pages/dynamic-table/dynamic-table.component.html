@@ -1,0 +1,10 @@
+<div class="container">
+  <h2 class="mb-4">Bootstrap Table with Thead</h2>
+
+  <app-my-table
+    [colArray]="['locationName', 'code']"
+    [gridData]="locationsArray"
+    (onEdit)="onDataEdit($event)"
+    (onDelete)="onDataDelete($event)"
+  ></app-my-table>
+</div>

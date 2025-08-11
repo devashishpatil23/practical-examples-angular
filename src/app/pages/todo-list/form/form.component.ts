@@ -6,7 +6,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { TodoListService } from '../../../services/todo-list.service';
+import { TodoListService } from '../todo-list.service';
 import { todo } from '../../../model/interface.model';
 
 @Component({
