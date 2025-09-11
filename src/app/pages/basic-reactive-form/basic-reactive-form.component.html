@@ -41,11 +41,11 @@
                 type="password"
                 id="password"
                 class="form-control"
+                #passwordFiled
               />
               <input
                 class="mt-2"
-                appShowPassword
-                targetElement="password"
+                [appShowPassword]="passwordFiled"
                 id="showPassword"
                 type="checkbox"
               />

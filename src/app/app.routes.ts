@@ -37,6 +37,7 @@ import { PracticeTodoComponent } from './pages/practice-todo/practice-todo.compo
 import { PracticeComponent } from './pages/practice/practice.component';
 import { DynamicFormWithJsonDataComponent } from './pages/dynamic-form-with-json-data/dynamic-form-with-json-data.component';
 import { DynamicTableComponent } from './pages/dynamic-table/dynamic-table.component';
+import { DemoComponent } from './pages/demo/demo.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -134,6 +135,11 @@ export const routes: Routes = [
     path: 'dynamicTable',
     component: DynamicTableComponent,
   },
+  {
+    path: 'demo',
+    component: DemoComponent,
+  },
+
   {
     path: 'rolebasedlogin',
     component: RoleBasedLoginComponent,

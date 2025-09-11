@@ -1,0 +1,105 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow-lg p-4 rounded-3">
+        <h3 class="text-center mb-4">Registration Form</h3>
+        <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+          <!-- Name -->
+          <div class="mb-3">
+            <label for="name" class="form-label">Full Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              placeholder="Enter your full name"
+              formControlName="name"
+            />
+            @if(userForm.get('name')?.invalid && (userForm.get('name')?.touched
+            || userForm.get('name')?.dirty )){
+            <small class="text-danger">Name is required field</small> }
+          </div>
+
+          <!-- Email -->
+          <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              placeholder="Enter your email"
+              formControlName="email"
+            />
+            @if(userForm.get('email')?.invalid &&
+            (userForm.get('email')?.touched || userForm.get('email')?.dirty) ){
+            @if(userForm.get('email')?.hasError('required')){
+            <small class="text-danger">Email is Required field</small> }
+            @if(userForm.get('email')?.hasError('email')){
+            <small class="text-danger">Invalid Email format</small> } }
+          </div>
+
+          <!-- Password -->
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              #pwd
+              placeholder="Enter password"
+              formControlName="password"
+            />
+            <input [appShowPassword]="pwd" type="checkbox" /><label for=""
+              >show password</label
+            >
+            @if(userForm.get('password')?.invalid &&
+            (userForm.get('password')?.touched ||
+            userForm.get('password')?.dirty )){
+
+            <ul class="text-danger">
+              @if(userForm.get('password')?.hasError?.('required')){
+              <li>Password is required</li>
+              } @if(userForm.get('password')?.hasError?.('uppercase')){
+              <li>At least 1 Uppercase</li>
+              } @if(userForm.get('password')?.hasError?.('lowercase')){
+              <li>At least 1 Lowercase</li>
+              } @if(userForm.get('password')?.hasError?.('specialChar')){
+              <li>At least 1 Special Char</li>
+              } @if(userForm.get('password')?.hasError?.('minLength')){
+              <li>min length 8</li>
+              }
+            </ul>
+            }
+          </div>
+
+          <!-- Confirm Password -->
+          <div class="mb-3">
+            <label for="confirmPassword" class="form-label"
+              >Confirm Password</label
+            >
+            <input
+              type="password"
+              class="form-control"
+              id="confirmPassword"
+              placeholder="Confirm password"
+              required
+              formControlName="confirmpassword"
+            />
+            @if(userForm.get('confirmpassword')?.invalid &&
+            (userForm.get('confirmpassword')?.touched ||
+            userForm.get('confirmpassword')?.dirty )){
+            @if(userForm.get('confirmpassword')?.hasError?.('required')){
+            <span>confirm password is required</span>
+            } @if(userForm.get('confirmpassword')?.errors?.['mismatch'] ){
+            <span>Password do not match</span>
+            } }
+          </div>
+
+          <!-- Submit -->
+          <div class="d-grid">
+            <button type="submit" class="btn btn-primary">Register</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

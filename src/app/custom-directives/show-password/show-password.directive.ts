@@ -10,19 +10,17 @@ import {
   selector: '[appShowPassword]',
 })
 export class ShowPasswordDirective {
-  @Input() targetElement!: string;
   constructor(private el: ElementRef, private renderer: Renderer2) {}
 
+  @Input('appShowPassword') inputRef!: HTMLInputElement;
+
   @HostListener('change') toggleShowPassword() {
-    const inputField = document.getElementById(
-      this.targetElement
-    ) as HTMLInputElement;
-    const checkedStatus = this.el.nativeElement.checked;
-    if (inputField) {
+    const checked = this.el.nativeElement.checked;
+    if (this.inputRef) {
       this.renderer.setAttribute(
-        inputField,
+        this.inputRef,
         'type',
-        checkedStatus ? 'text' : 'password'
+        checked ? 'text' : 'password'
       );
     }
   }

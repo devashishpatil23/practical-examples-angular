@@ -25,7 +25,7 @@ export class TooltipDirective {
 
   @HostListener('mouseover') onMouseOver() {
     const myToolTip = this.createToolTip();
-    this.renderer.appendChild(this.el.nativeElement, myToolTip);
+    this.renderer.appendChild(this.el.nativeElement, 1);
   }
 
   @HostListener('mouseout') onMouseOut() {
