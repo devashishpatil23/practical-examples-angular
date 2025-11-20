@@ -38,10 +38,13 @@ import { PracticeComponent } from './pages/practice/practice.component';
 import { DynamicFormWithJsonDataComponent } from './pages/dynamic-form-with-json-data/dynamic-form-with-json-data.component';
 import { DynamicTableComponent } from './pages/dynamic-table/dynamic-table.component';
 import { DemoComponent } from './pages/demo/demo.component';
+import { WebWorkerImplementationComponent } from './pages/web-worker-implementation/web-worker-implementation.component';
+import { ItemsComponent } from './pages/items/items.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
+  { path: 'items', component: ItemsComponent },
   { path: 'practice-todo', component: PracticeTodoComponent },
   { path: 'hostlistner', component: HostListnerComponent },
   { path: 'dependent-dropdown', component: DependentDropdownComponent },
@@ -93,6 +96,10 @@ export const routes: Routes = [
   {
     path: 'stepper-form',
     component: StepperFormComponent,
+  },
+  {
+    path: 'web-workers',
+    component: WebWorkerImplementationComponent,
   },
   {
     path: 'basic-todo',

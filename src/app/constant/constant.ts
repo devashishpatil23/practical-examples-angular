@@ -1,7 +1,15 @@
 export const menuList = [
   {
+    label: 'Items List with Filters',
+    routerLink: '/items',
+  },
+  {
     label: 'Basic todo',
     routerLink: '/basic-todo',
+  },
+  {
+    label: 'web-workers',
+    routerLink: '/web-workers',
   },
   {
     label: 'Reactive form with custom validation',

@@ -1,0 +1,32 @@
+<div *ngIf="loading" class="text-center mt-4">
+  <p>Loading, please wait...</p>
+</div>
+
+<div class="mb-3 text-end" *ngIf="!loading">
+  <input
+    type="text"
+    class="form-control w-50 d-inline-block me-2"
+    placeholder="Search by name or language..."
+    [(ngModel)]="searchTerm"
+    name="search"
+  />
+  <button (click)="searchItem()" class="btn btn-primary">Search</button>
+</div>
+
+<cdk-virtual-scroll-viewport
+  *ngIf="!loading"
+  itemSize="50"
+  class="viewport mt-4"
+>
+  <table
+    class="table table-bordered table-striped w-100 text-center align-middle"
+  >
+    <tbody>
+      <tr *cdkVirtualFor="let item of filtredList; trackBy: trackByFn">
+        <td>{{ item.name }}</td>
+        <td>{{ item.language }}</td>
+        <td>{{ item.id }}</td>
+      </tr>
+    </tbody>
+  </table>
+</cdk-virtual-scroll-viewport>

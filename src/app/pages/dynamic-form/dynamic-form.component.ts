@@ -29,9 +29,14 @@ export class DynamicFormComponent implements OnInit {
   }
 
   onSubmit() {
-    this.FormData = this.myForm.value;
-    this.myForm.reset();
-    this.isFormSubmited = true;
+    if (this.myForm.invalid) {
+      this.myForm.markAllAsTouched();
+      return;
+    } else if (this.myForm.valid) {
+      this.FormData = this.myForm.value;
+      this.myForm.reset();
+      this.isFormSubmited = true;
+    }
   }
   get getPhoneFormArray(): FormArray {
     return this.myForm.get('phoneNumbers') as FormArray;

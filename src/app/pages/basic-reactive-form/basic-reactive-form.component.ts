@@ -41,8 +41,12 @@ export class BasicReactiveFormComponent {
   }
 
   onSubmit() {
-    this.myForm.reset();
-    alert('Formed Saved!');
-    this.router.navigate(['/']);
+    if (this.myForm.invalid) {
+      this.myForm.markAllAsTouched();
+    } else if (this.myForm.valid) {
+      this.myForm.reset();
+      alert('Formed Saved!');
+      this.router.navigate(['/']);
+    }
   }
 }

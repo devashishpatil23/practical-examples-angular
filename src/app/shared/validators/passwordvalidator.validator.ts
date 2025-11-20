@@ -27,6 +27,7 @@ function passwordStrength(control: AbstractControl): ValidationErrors | null {
 
   return isPasswordValid ? null : validationErros;
 }
+
 function confirmPassword(control: AbstractControl): ValidationErrors | null {
   const confirmPassword = control.value;
   const password = control.parent?.get('password')?.value;

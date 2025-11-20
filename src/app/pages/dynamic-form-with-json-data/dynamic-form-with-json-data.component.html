@@ -3,7 +3,10 @@
 
   <form #myFroms="ngForm" [formGroup]="myForm">
     <div class="row">
-      @for (control of formData.formControls; track $index) { @if
+
+      @for (control of formData.formControls; track $index) { 
+        
+        @if
       (['text','email','password','number','date'].includes(control.type)) {
       <div class="form-group" [class]="control.class">
         <label for="exampleInputEmail1">{{ control.label }}</label>
